@@ -1,7 +1,12 @@
-def main():
+# importing tkinter
+import tkinter as tk
+
+
+# introductory code
+def intro():
     played = input("Welcome Player 1, have you ever played hangman before (yes/no)? ")
     if played == "yes":
-        ready = print("Are you ready to play(yes/no)? ")
+        ready = input("Are you ready to play(yes/no)? ")
         if ready == "yes":
             print("Great, let's play!")
         if ready == "no":
@@ -18,4 +23,6 @@ def main():
         if ready_now == "no":
             print("Too bad!")
 
-main()
+intro()
+
+# keypress functions
