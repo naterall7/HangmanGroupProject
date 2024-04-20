@@ -6,6 +6,8 @@ import tkinter as tk
 
 
 import random
+
+from copy import keyboard
 word_bank = ["prettiest","close","massive","hollow","cultured","seashore","explode","dizzy","minister","competent",
 "thoughtful","harbor","tidy","dance","children","zesty","clean","ball","nostalgic","plan","week","strap","board",
 "slope","bat","steep","mourn","cat","girl","ancient","street","mice","dare","wasteful","tub","limping","whimsical",
