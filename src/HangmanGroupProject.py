@@ -1,3 +1,4 @@
+
 # importing tkinter
 import tkinter as tk
 
@@ -77,31 +78,29 @@ def intro():
         if ready_now == "no":
             print("Too bad!")
 
-intro()
-hangman()
+
 
 # keypress functions
-window = tk.Tk()
-window.title("Hangman")
+# window = tk.Tk()
+# window.title("Hangman")
 
-frame = tk.Frame(master=window, relief="sunken", width=100, height=100)
-frame.pack()
-label = tk.Label(master=frame, text="")
-label.pack()
+# frame = tk.Frame(master=window, relief="sunken", width=100, height=100)
+# frame.pack()
+# label = tk.Label(master=frame, text="")
+# label.pack()
 
-def submit_guess():
-    print(label["text"])
+# def submit_guess():
+#     print(label["text"])
 
-button = tk.Button(master=frame, relief="raised", text="Submit", bg="red", fg="white", width=5, height=5, command=submit_guess)
-button.pack()
+# button = tk.Button(master=frame, relief="raised", text="Submit", bg="red", fg="white", width=5, height=5, command=submit_guess)
+# button.pack()
 
-def update(label, text):
-    label.config(text=text)
+# def update(label, text):
+#     label.config(text=text)
 
-def handle_keypress(event):
-    key = event.char
-    update(label, key)
+# def handle_keypress(event):
+#     key = event.char
+#     update(label, key)
 
-window.bind("<Key>", handle_keypress)
-window.mainloop()
+# window.bind("<Key>", handle_keypress)
 
