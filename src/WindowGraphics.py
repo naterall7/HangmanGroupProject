@@ -10,36 +10,47 @@ head_connect = canvas.create_line(125,20,125,40, fill="black", width=2)
 pole = canvas.create_line(75,20,75,200, fill="black", width=2)
 base = canvas.create_line(60,200,90,200, fill="black", width=2)
 
-head = canvas.create_oval(105,40,145,80, outline="black", fill="white", width=2)
-body = canvas.create_line(125,80,125,140, fill="black", width=2)
-left_leg = canvas.create_line(125,140,105,160, fill="black", width=2)
-right_leg = canvas.create_line(125,140,145,160, fill="black", width=2)
-left_arm = canvas.create_line(125,90,100,110, fill="black", width=2)
-right_arm = canvas.create_line(125,90,150,110, fill="black", width=2)
-mouth = canvas.create_line(115,70,135,70, fill="black", width=2)
-#   The following make up the left eye
-canvas.create_line(113,50,123,60, fill="black", width=2)
-canvas.create_line(123,50,113,60, fill="black", width=2)
-#   The following make up the right eye
-canvas.create_line(137,50,127,60, fill="black", width=2)
-canvas.create_line(127,50,137,60, fill="black", width=2)
+# head = canvas.create_oval(105,40,145,80, outline="black", fill="white", width=2)
+# body = canvas.create_line(125,80,125,140, fill="black", width=2)
+# left_leg = canvas.create_line(125,140,105,160, fill="black", width=2)
+# right_leg = canvas.create_line(125,140,145,160, fill="black", width=2)
+# left_arm = canvas.create_line(125,90,100,110, fill="black", width=2)
+# right_arm = canvas.create_line(125,90,150,110, fill="black", width=2)
+# mouth = canvas.create_line(115,70,135,70, fill="black", width=2)
+# #   The following make up the left eye
+# canvas.create_line(113,50,123,60, fill="black", width=2)
+# canvas.create_line(123,50,113,60, fill="black", width=2)
+# #   The following make up the right eye
+# canvas.create_line(137,50,127,60, fill="black", width=2)
+# canvas.create_line(127,50,137,60, fill="black", width=2)
 
-loss = canvas.create_text(230,30, text="YOU LOSE!", font=40, fill="red")
-canvas.create_text(195,70, text="W", font=30, fill="red")
-canvas.create_text(225,70, text="P", font=30, fill="red")
-canvas.create_text(255,70, text="U", font=30, fill="red")
-canvas.create_text(195,100, text="A", font=30, fill="red")
-canvas.create_text(225,100, text="D", font=30, fill="red")
-canvas.create_text(255,100, text="L", font=30, fill="red")
-canvas.create_text(195,130, text="H", font=30, fill="red")
-canvas.create_text(225,130, text="F", font=30, fill="red")
-canvas.create_text(255,130, text="I", font=30, fill="red")
+# loss = canvas.create_text(230,30, text="YOU LOSE!", font=40, fill="red")
+# canvas.create_text(195,70, text="W", font=30, fill="red")
+# canvas.create_text(225,70, text="P", font=30, fill="red")
+# canvas.create_text(255,70, text="U", font=30, fill="red")
+# canvas.create_text(195,100, text="A", font=30, fill="red")
+# canvas.create_text(225,100, text="D", font=30, fill="red")
+# canvas.create_text(255,100, text="L", font=30, fill="red")
+# canvas.create_text(195,130, text="H", font=30, fill="red")
+# canvas.create_text(225,130, text="F", font=30, fill="red")
+# canvas.create_text(255,130, text="I", font=30, fill="red")
 
-entry = tk.Entry()
+word_label = tk.Label(text="", relief="ridge", borderwidth=4, bg="white", width=17)
+word_label.pack()
+
+def letter_blanks(length):
+    for x in range(0,length):
+        current_text = word_label["text"]
+        word_label.config(text=current_text+" __")
+length = len("Word")
+letter_blanks(length)
+
+entry = tk.Entry(borderwidth=4, bg="white", relief="ridge", width=20)
 entry.pack()
 
 keyboard = tk.Frame(height=95, width=300, bg="black", borderwidth=4, relief="ridge")
 keyboard.pack()
+
 Qbutton = tk.Button(master=keyboard, text="Q", height=1, width=2)
 Qbutton.place(x=12, y=1)
 Wbutton = tk.Button(master=keyboard, text="W", height=1, width=2)
@@ -101,8 +112,6 @@ Deletebutton.place(x=242, y=59)
 
 window1.mainloop()
 
-#   Use Accumulator Pattern. An incorrect guess will add 1 to the value of "incorrect_guess"
-#   and that variable gets sent through the consequence(incorrect_guess) function
 def consequence(incorrect_guess, letter):
     if incorrect_guess == 1:
         head = canvas.create_oval(155,40,195,80, outline="black", fill="white", width=2)
