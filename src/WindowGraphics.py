@@ -1,3 +1,9 @@
+import sys
+sys.path.insert(0, '../HangmanGroupProject-3/src')
+from HangmanGroupProject import *
+
+print(word_bank)
+
 import tkinter as tk
 window1 = tk.Tk()
 window1.title("Hangman")
