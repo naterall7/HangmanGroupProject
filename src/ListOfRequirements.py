@@ -3,8 +3,8 @@
 # Week #3 - Functions - Completed
 # Week #4 - If Statements - Completed
 # Week #5 - Exam (Ignore)
-# Week #6 - Accumulator Pattern
-# Week #7 - Tuple, Set, Dictionary
+# Week #6 - Accumulator Pattern - Completed
+# Week #7 - Tuple, Set, Dictionary - Completed
 # Week #8 - Exam (Ignore)
 # Week #9 - Classes, Objects, Inheritance, Scope
 # Week #10 - Tkinter Widgets - Completed
