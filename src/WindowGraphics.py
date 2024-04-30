@@ -51,8 +51,8 @@ def letter_blanks(length):
 length = len("Word")
 letter_blanks(length)
 
-entry = tk.Entry(borderwidth=4, bg="white", relief="ridge", width=20)
-entry.pack()
+entry_box = tk.Label(text="", borderwidth=4, bg="white", relief="ridge", width=17)
+entry_box.pack()
 
 keyboard = tk.Frame(height=95, width=300, bg="black", borderwidth=4, relief="ridge")
 keyboard.pack()
@@ -115,6 +115,12 @@ Mbutton = tk.Button(master=keyboard, text="M", height=1, width=2)
 Mbutton.place(x=215, y=59)
 Deletebutton = tk.Button(master=keyboard, text="Delete", height=1, width=4)
 Deletebutton.place(x=242, y=59)
+
+def keypress(event):
+    key = event.char
+    entry_box.config(text=key)
+
+window1.bind("<Key>", keypress)
 
 window1.mainloop()
 
