@@ -1,4 +1,3 @@
-
 # importing tkinter
 import tkinter as tk
 
@@ -29,26 +28,44 @@ import random
 # window.mainloop()
 
 def intro():
-    played = input("Welcome Player 1, have you ever played hangman before (yes/no)? ")
-    if played == "yes":
-        ready = input("Are you ready to play(yes/no)? ")
-        if ready == "yes":
-            print("Great, let's play!")
-            hangman()
-        if ready == "no":
-            closing1()
-    if played == "no":
-        print("Don't worry, it's easy! There will be a secret word picked from a list of words.") 
-        print("You, the player, must guess the secret word, letter by letter.")
-        print("For each wrong letter guessed, there will be a part of a drawing of a man.")
-        print("If the drawing of the man is completed before the word is guessed, you lose.")
-        print("If the word is guessed before the drawing is completed, you win!")
-        ready_now = input("Are you ready to play now (yes/no)? ")
-        if ready_now == "yes":
-            print("Great, let's play!")
-            hangman()
-        if ready_now == "no":
-            closing1()
+    while True:
+        played = input("Welcome Player 1, have you ever played hangman before (yes/no)? ")
+        if played == "yes":
+            while True:
+                ready = input("Are you ready to play(yes/no)? ")
+                if ready == "yes":
+                    print("Great, let's play!")
+                    hangman()
+                    break
+                elif ready == "no":
+                    closing1()
+                    break
+                else:
+                    print("Please type 'yes' or 'no'!")
+                    continue
+            break
+        elif played == "no":
+            print("Don't worry, it's easy! There will be a secret word picked from a list of words.") 
+            print("You, the player, must guess the secret word, letter by letter.")
+            print("For each wrong letter guessed, there will be a part of a drawing of a man.")
+            print("If the drawing of the man is completed before the word is guessed, you lose.")
+            print("If the word is guessed before the drawing is completed, you win!")
+            while True:
+                ready_now = input("Are you ready to play now (yes/no)? ")
+                if ready_now == "yes":
+                    print("Great, let's play!")
+                    hangman()
+                    break
+                elif ready_now == "no":
+                    closing1()
+                    break
+                else:
+                    print("Please type 'yes' or 'no'!")
+                    continue
+            break
+        else:
+            print("Please type 'yes' or 'no'!")
+            continue
 
 def closing1():
     print("Alright, I'll be here when you're ready!")
@@ -56,13 +73,19 @@ def closing1():
 
 def closing2():
     print("Thanks for playing!")
-    again = input("Would you like to play again (yes/no)? ")
-    if again == "yes":
-        print("Great, let's play!")
-        hangman()
-    if again == "no":
-        print("Alright, see you next time!")
-        print("*silently waves goodbye*")
+    while True:
+        again = input("Would you like to play again (yes/no)? ")
+        if again == "yes":
+            print("Great, let's play!")
+            hangman()
+            break
+        elif again == "no":
+            print("Alright, see you next time!")
+            print("*silently waves goodbye*")
+            break
+        else:
+            print("Please type 'yes' or 'no'!")
+            continue
 
 word_bank = ["prettiest","close","massive","hollow","cultured","seashore","explode","dizzy","minister","competent",
 "thoughtful","harbor","tidy","dance","children","zesty","clean","ball","nostalgic","plan","week","strap","board",
@@ -111,53 +134,3 @@ def hangman():
     print("The word has", len(selected_word), "letters.")
     letter_guess(selected_word)
     closing2()
-
-
-
-# # introductory code
-# def intro():
-#     played = input("Welcome Player 1, have you ever played hangman before (yes/no)? ")
-#     if played == "yes":
-#         ready = input("Are you ready to play(yes/no)? ")
-#         if ready == "yes":
-#             print("Great, let's play!")
-#         if ready == "no":
-#             print("Too bad!")
-#     if played == "no":
-#         print("Don't worry, it's easy! There will be a secret word picked from a list of words.") 
-#         print("You, the player, must guess the secret word, letter by letter.")
-#         print("For each wrong letter guessed, there will be a part of a drawing of a man.")
-#         print("If the drawing of the man is completed before the word is guessed, you lose.")
-#         print("If the word is guessed before the drawing is completed, you win!")
-#         ready_now = input("Are you ready to play now (yes/no)? ")
-#         if ready_now == "yes":
-#             print("Great, let's play!")
-
-#         if ready_now == "no":
-#             print("Too bad!")
-
-
-# keypress functions
-# window = tk.Tk()
-# window.title("Hangman")
-
-# frame = tk.Frame(master=window, relief="sunken", width=100, height=100)
-# frame.pack()
-# label = tk.Label(master=frame, text="")
-# label.pack()
-
-# def submit_guess():
-#     print(label["text"])
-
-# button = tk.Button(master=frame, relief="raised", text="Submit", bg="red", fg="white", width=5, height=5, command=submit_guess)
-# button.pack()
-
-# def update(label, text):
-#     label.config(text=text)
-
-# def handle_keypress(event):
-#     key = event.char
-#     update(label, key)
-
-# window.bind("<Key>", handle_keypress)
-
