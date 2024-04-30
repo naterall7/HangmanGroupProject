@@ -134,7 +134,7 @@ def intro():
             print("Great, let's play!")
         if ready_now == "no":
             print("Too bad!")
-
+    hangman()
 
 
 # keypress functions
@@ -161,4 +161,3 @@ def intro():
 
 # window.bind("<Key>", handle_keypress)
 
-intro()
