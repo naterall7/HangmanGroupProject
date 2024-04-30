@@ -7,6 +7,24 @@ import tkinter as tk
 window1 = tk.Tk()
 window1.title("Hangman")
 
+def keypress(event):
+    key = event.char
+    entry_box.config(text=key)
+
+def enter(event):
+    letter = entry_box["text"]
+    print(letter)
+    
+def delete(event):
+    entry_box.config(text="")
+
+def window_keypress(letter):
+    entry_box.config(text=letter)
+
+window1.bind("<Key>", keypress)
+window1.bind("<Return>", enter)
+window1.bind("<Delete>", delete)
+
 canvas = tk.Canvas(borderwidth=4, relief="ridge", height=200, width=300, bg="white")
 canvas.pack()
 
@@ -56,11 +74,11 @@ entry_box.pack()
 keyboard = tk.Frame(height=95, width=300, bg="black", borderwidth=4, relief="ridge")
 keyboard.pack()
 
-Qbutton = tk.Button(master=keyboard, text="Q", height=1, width=2)
+Qbutton = tk.Button(master=keyboard, text="Q", height=1, width=2, command=window_keypress("q"))
 Qbutton.place(x=12, y=1)
-Wbutton = tk.Button(master=keyboard, text="W", height=1, width=2)
+Wbutton = tk.Button(master=keyboard, text="W", height=1, width=2, command=window_keypress("w"))
 Wbutton.place(x=39, y=1)
-Ebutton = tk.Button(master=keyboard, text="E", height=1, width=2)
+Ebutton = tk.Button(master=keyboard, text="E", height=1, width=2, command=window_keypress("e"))
 Ebutton.place(x=66, y=1)
 Rbutton = tk.Button(master=keyboard, text="R", height=1, width=2)
 Rbutton.place(x=93, y=1)
@@ -114,12 +132,6 @@ Mbutton = tk.Button(master=keyboard, text="M", height=1, width=2)
 Mbutton.place(x=215, y=59)
 Deletebutton = tk.Button(master=keyboard, text="Delete", height=1, width=4)
 Deletebutton.place(x=242, y=59)
-
-def keypress(event):
-    key = event.char
-    entry_box.config(text=key)
-
-window1.bind("<Key>", keypress)
 
 window1.mainloop()
 
