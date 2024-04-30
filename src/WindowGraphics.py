@@ -133,6 +133,8 @@ Mbutton.place(x=215, y=59)
 Deletebutton = tk.Button(master=keyboard, text="Delete", height=1, width=4)
 Deletebutton.place(x=242, y=59)
 
+intro()
+
 window1.mainloop()
 
 def consequence(incorrect_guess, letter):
