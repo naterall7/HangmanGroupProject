@@ -5,7 +5,6 @@ window1.title("Hangman")
 canvas = tk.Canvas(borderwidth=4, relief="ridge", height=200, width=300, bg="white")
 canvas.pack()
 
-
 def keypress(event):
     key = event.char
     entry_box.config(text=key)
@@ -33,31 +32,6 @@ top_post = canvas.create_line(75,20,125,20, fill="black", width=2)
 head_connect = canvas.create_line(125,20,125,40, fill="black", width=2)
 pole = canvas.create_line(75,20,75,200, fill="black", width=2)
 base = canvas.create_line(60,200,90,200, fill="black", width=2)
-
-# head = canvas.create_oval(105,40,145,80, outline="black", fill="white", width=2)
-# body = canvas.create_line(125,80,125,140, fill="black", width=2)
-# left_leg = canvas.create_line(125,140,105,160, fill="black", width=2)
-# right_leg = canvas.create_line(125,140,145,160, fill="black", width=2)
-# left_arm = canvas.create_line(125,90,100,110, fill="black", width=2)
-# right_arm = canvas.create_line(125,90,150,110, fill="black", width=2)
-# mouth = canvas.create_line(115,70,135,70, fill="black", width=2)
-# #   The following make up the left eye
-# canvas.create_line(113,50,123,60, fill="black", width=2)
-# canvas.create_line(123,50,113,60, fill="black", width=2)
-# #   The following make up the right eye
-# canvas.create_line(137,50,127,60, fill="black", width=2)
-# canvas.create_line(127,50,137,60, fill="black", width=2)
-
-# loss = canvas.create_text(230,30, text="YOU LOSE!", font=40, fill="red")
-# canvas.create_text(195,70, text="W", font=30, fill="red")
-# canvas.create_text(225,70, text="P", font=30, fill="red")
-# canvas.create_text(255,70, text="U", font=30, fill="red")
-# canvas.create_text(195,100, text="A", font=30, fill="red")
-# canvas.create_text(225,100, text="D", font=30, fill="red")
-# canvas.create_text(255,100, text="L", font=30, fill="red")
-# canvas.create_text(195,130, text="H", font=30, fill="red")
-# canvas.create_text(225,130, text="F", font=30, fill="red")
-# canvas.create_text(255,130, text="I", font=30, fill="red")
 
 word_label = tk.Label(text="", relief="ridge", borderwidth=4, bg="white", width=17)
 word_label.pack()
@@ -169,7 +143,7 @@ class Player:
 
 name = input("What is your name? ")
 Player_1 = Player(name)
-window1.title(f"Hangman - {name}")
+window1.title(f"Hangman - Current player: {name}")
 
 def intro():
     Player_1.welcome()
