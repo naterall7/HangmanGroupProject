@@ -254,8 +254,8 @@ def select_random_word():
     return random.choice(word_bank)
 
 def display_word(word, guessed_letters):
-    count = length()
-    letter_blanks(count)
+    length = len(word)
+    letter_blanks(length)
     displayed_word = ""
     for letter in word:
         if letter in guessed_letters:
