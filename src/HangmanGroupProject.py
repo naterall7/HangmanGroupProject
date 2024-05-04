@@ -151,7 +151,7 @@ def consequence(incorrect_guess, letter):
         left_arm = canvas.create_line(125,90,100,110, fill="black", width=2)
         canvas.create_text(225,100, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 6:
-        right_arm = canvas.create_line(125,90,200,110, fill="black", width=2)
+        right_arm = canvas.create_line(125,90,150,110, fill="black", width=2)
         canvas.create_text(255,100, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 7:
         canvas.create_line(113,50,123,60, fill="black", width=2)
@@ -165,7 +165,7 @@ def consequence(incorrect_guess, letter):
         mouth = canvas.create_line(115,70,135,70, fill="black", width=2)
         canvas.create_text(255,130, text=f"{letter}", font=30, fill="red")
         #   reveal word, no longer allow inputs, can start again?
-        loss = canvas.create_text(65,30, text="YOU LOSE!", font=30)
+        loss = canvas.create_text(15,30, text="YOU LOSE!", font=30)
 
 import random
 
