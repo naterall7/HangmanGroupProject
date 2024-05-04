@@ -68,8 +68,6 @@ def letter_blanks(length):
     for x in range(0,length):
         current_text = word_label["text"]
         word_label.config(text=current_text+" __")
-length = len("Word")
-letter_blanks(length)
 
 entry_box = tk.Label(text="", borderwidth=4, bg="white", relief="ridge", width=17)
 entry_box.pack()
@@ -256,6 +254,8 @@ def select_random_word():
     return random.choice(word_bank)
 
 def display_word(word, guessed_letters):
+    count = length()
+    letter_blanks(count)
     displayed_word = ""
     for letter in word:
         if letter in guessed_letters:
