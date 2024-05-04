@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, '../HangmanGroupProject-3/src')
+sys.path.insert(0, '../HangmanGroupProject/src')
 from HangmanGroupProject import *
 
 import tkinter as tk
