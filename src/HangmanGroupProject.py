@@ -139,7 +139,7 @@ Deletebutton.place(x=242, y=59)
 
 def consequence(incorrect_guess, letter):
     if incorrect_guess == 1:
-        head = canvas.create_oval(155,40,195,80, outline="black", fill="white", width=2)
+        head = canvas.create_oval(105,40,145,80, outline="black", fill="white", width=2) #195-->145
         canvas.create_text(195,70, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 2:
         body = canvas.create_line(175,80,175,140, fill="black", width=2)
@@ -280,8 +280,8 @@ def display_word(word, guessed_letters):
 
 def letter_guess(word):
     guessed_letters = set()
-    incorrect_guess = 0
     while True:
+        incorrect_guess = 0
         print("Word:", display_word(word, guessed_letters))
         guess = input("Guess a letter: ")
         if len(guess) != 1 or not guess.isalpha():
