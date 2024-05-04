@@ -12,7 +12,7 @@ def keypress(event):
 
 def submit_letter(): 
     letter = entry_box["text"]
-    print(letter)
+    return letter
 
 def enter(event): #just to make sure keyboard and window button do same thing
     submit_letter()
@@ -278,7 +278,7 @@ def letter_guess(word):
             print("Sorry, that letter is not in the word.")
             incorrect_guess += 1
             consequence(incorrect_guess, guess)
-            if incorrect_guess == 9:
+        if incorrect_guess == 9:
                 print("Sorry, game lost.")
                 break
         if all(letter in guessed_letters for letter in word):
