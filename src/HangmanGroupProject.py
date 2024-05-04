@@ -111,6 +111,7 @@ def display_word(word, guessed_letters):
 
 def letter_guess(word):
     guessed_letters = set()
+    incorrect_guess = 0
     while True:
         print("Word:", display_word(word, guessed_letters))
         guess = input("Guess a letter: ")
@@ -125,6 +126,8 @@ def letter_guess(word):
             print("Good job! You guessed a letter correctly.")
         else:
             print("Sorry, that letter is not in the word.")
+            incorrect_guess += 1
+            consequence(incorrect_guess, guess)
         if all(letter in guessed_letters for letter in word):
             print("Congratulations! You've guessed the word:", word)
             break
