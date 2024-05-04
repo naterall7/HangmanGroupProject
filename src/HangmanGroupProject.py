@@ -175,7 +175,7 @@ Player_1 = Player(name)
 def intro():
     Player_1.welcome()
     while True:
-        played = input("Welcome Player 1, have you ever played hangman before (yes/no)? ")
+        played = input("Have you ever played hangman before (yes/no)? ")
         if played == "yes":
             while True:
                 ready = input("Are you ready to play(yes/no)? ")
