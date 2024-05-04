@@ -283,6 +283,9 @@ def letter_guess(word):
             print("Sorry, that letter is not in the word.")
             incorrect_guess += 1
             consequence(incorrect_guess, guess)
+            if incorrect_guess == 9:
+                print("Sorry, game lost.")
+                break
         if all(letter in guessed_letters for letter in word):
             print("Congratulations! You've guessed the word:", word)
             break
