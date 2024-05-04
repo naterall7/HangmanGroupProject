@@ -157,8 +157,6 @@ def consequence(incorrect_guess, letter):
     if incorrect_guess == 9:
         mouth = canvas.create_line(115,70,135,70, fill="black", width=2)
         letter9 = canvas.create_text(255,130, text=f"{letter}", font=30, fill="red")
-        #   reveal word, no longer allow inputs, can start again?
-        loss = canvas.create_text(225,30, text="YOU LOSE!", font=30)
 
 import random
 
@@ -284,9 +282,11 @@ def letter_guess(word):
             incorrect_guess += 1
             consequence(incorrect_guess, guess)
         if incorrect_guess == 9:
-                print("Sorry, game lost.")
-                break
+            loss = canvas.create_text(225,30, text="YOU LOSE!", font=30)
+            print("Sorry, game lost.")
+            break
         if all(letter in guessed_letters for letter in word):
+            win = canvas.create_text(225,30, text="YOU WIN!", font=30)
             print("Congratulations! You've guessed the word:", word)
             break
 
