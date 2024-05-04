@@ -1,4 +1,3 @@
-# importing tkinter
 import tkinter as tk
 
 def consequence(incorrect_guess, letter):
@@ -36,31 +35,18 @@ def consequence(incorrect_guess, letter):
 
 import random
 
-# window = tk.Tk()
-# window.title("Hangman")
+class Player:
+    def __init__(self, name):
+        self.name = name
 
-# frame = tk.Frame(master=window, relief="sunken", width=100, height=100)
-# frame.pack()
-# label = tk.Label(master=frame, text="")
-# label.pack()
+    def welcome(self):
+        print("Welcome, " + self.name + "!")
 
-# def submit_guess():
-#     print(label["text"])
-
-# button = tk.Button(master=frame, relief="raised", text="Submit", bg="red", fg="white", width=5, height=5, command=submit_guess)
-# button.pack()
-
-# def update(label, text):
-#     label.config(text=text)
-
-# def handle_keypress(event):
-#     key = event.char
-#     update(label, key)
-
-# window.bind("<Key>", handle_keypress)
-# window.mainloop()
+name = input("What is your name? ")
+Player_1 = Player(name)
 
 def intro():
+    Player_1.welcome()
     while True:
         played = input("Welcome Player 1, have you ever played hangman before (yes/no)? ")
         if played == "yes":
