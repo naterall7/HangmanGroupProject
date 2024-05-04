@@ -151,7 +151,7 @@ def consequence(incorrect_guess, letter):
         left_arm = canvas.create_line(125,90,100,110, fill="black", width=2)
         canvas.create_text(225,100, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 6:
-        right_arm = canvas.create_line(125,90,250,110, fill="black", width=2)
+        right_arm = canvas.create_line(125,90,200,110, fill="black", width=2)
         canvas.create_text(255,100, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 7:
         canvas.create_line(113,50,123,60, fill="black", width=2)
