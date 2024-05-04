@@ -141,30 +141,30 @@ def consequence(incorrect_guess, letter):
         head = canvas.create_oval(105,40,145,80, outline="black", fill="white", width=2) #195-->145
         canvas.create_text(195,70, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 2:
-        body = canvas.create_line(175,80,175,140, fill="black", width=2)
+        body = canvas.create_line(125,80,125,140, fill="black", width=2)
         canvas.create_text(225,70, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 3:
-        left_leg = canvas.create_line(175,140,155,160, fill="black", width=2)
+        left_leg = canvas.create_line(125,140,105,160, fill="black", width=2)
         canvas.create_text(255,70, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 4:
-        right_leg = canvas.create_line(175,140,195,160, fill="black", width=2)
+        right_leg = canvas.create_line(125,140,145,160, fill="black", width=2)
         canvas.create_text(195,100, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 5:
-        left_arm = canvas.create_line(175,90,150,110, fill="black", width=2)
+        left_arm = canvas.create_line(125,90,100,110, fill="black", width=2)
         canvas.create_text(225,100, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 6:
-        right_arm = canvas.create_line(175,90,200,110, fill="black", width=2)
+        right_arm = canvas.create_line(125,90,250,110, fill="black", width=2)
         canvas.create_text(255,100, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 7:
-        canvas.create_line(163,50,173,60, fill="black", width=2)
-        canvas.create_line(173,50,163,60, fill="black", width=2)
+        canvas.create_line(113,50,123,60, fill="black", width=2)
+        canvas.create_line(123,50,113,60, fill="black", width=2)
         canvas.create_text(195,130, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 8:
-        canvas.create_line(187,50,177,60, fill="black", width=2)
-        canvas.create_line(177,50,187,60, fill="black", width=2)
+        canvas.create_line(137,50,127,60, fill="black", width=2)
+        canvas.create_line(127,50,137,60, fill="black", width=2)
         canvas.create_text(225,130, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 9:
-        mouth = canvas.create_line(165,70,185,70, fill="black", width=2)
+        mouth = canvas.create_line(115,70,135,70, fill="black", width=2)
         canvas.create_text(255,130, text=f"{letter}", font=30, fill="red")
         #   reveal word, no longer allow inputs, can start again?
         loss = canvas.create_text(65,30, text="YOU LOSE!", font=30)
@@ -265,9 +265,9 @@ def display_word(word, guessed_letters):
     return displayed_word.strip()
 
 def letter_guess(word):
+    incorrect_guess = 0
     guessed_letters = set()
     while True:
-        incorrect_guess = 0
         print("Word:", display_word(word, guessed_letters))
         guess = input("Guess a letter: ")
         if len(guess) != 1 or not guess.isalpha():
