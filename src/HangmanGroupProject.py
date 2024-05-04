@@ -171,6 +171,7 @@ class Player:
 
 name = input("What is your name? ")
 Player_1 = Player(name)
+window1.title(f"Hangman - {name}")
 
 def intro():
     Player_1.welcome()
