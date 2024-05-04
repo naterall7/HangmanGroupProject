@@ -64,11 +64,6 @@ base = canvas.create_line(60,200,90,200, fill="black", width=2)
 word_label = tk.Label(text="", relief="ridge", borderwidth=4, bg="white", width=17)
 word_label.pack()
 
-def letter_blanks(length):
-    for x in range(0,length):
-        current_text = word_label["text"]
-        word_label.config(text=current_text+" __")
-
 entry_box = tk.Label(text="", borderwidth=4, bg="white", relief="ridge", width=17)
 entry_box.pack()
 
@@ -165,7 +160,7 @@ def consequence(incorrect_guess, letter):
         mouth = canvas.create_line(115,70,135,70, fill="black", width=2)
         canvas.create_text(255,130, text=f"{letter}", font=30, fill="red")
         #   reveal word, no longer allow inputs, can start again?
-        loss = canvas.create_text(15,30, text="YOU LOSE!", font=30)
+        loss = canvas.create_text(225,30, text="YOU LOSE!", font=30)
 
 import random
 
@@ -254,14 +249,14 @@ def select_random_word():
     return random.choice(word_bank)
 
 def display_word(word, guessed_letters):
-    length = len(word)
-    letter_blanks(length)
     displayed_word = ""
     for letter in word:
         if letter in guessed_letters:
             displayed_word += letter + " "
+            word_label.config(text=displayed_word)
         else:
-            displayed_word += "_ "
+            displayed_word += "__ "
+            word_label.config(text=displayed_word)
     return displayed_word.strip()
 
 def letter_guess(word):
