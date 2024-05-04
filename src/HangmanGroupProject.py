@@ -223,7 +223,12 @@ def closing2():
         again = input("Would you like to play again (yes/no)? ")
         if again == "yes":
             print("Great, let's play!")
-
+            canvas.delete("all")
+            canvas.pack()
+            top_post = canvas.create_line(75,20,125,20, fill="black", width=2)
+            head_connect = canvas.create_line(125,20,125,40, fill="black", width=2)
+            pole = canvas.create_line(75,20,75,200, fill="black", width=2)
+            base = canvas.create_line(60,200,90,200, fill="black", width=2)
             hangman()
             break
         elif again == "no":
