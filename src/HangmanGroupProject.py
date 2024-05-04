@@ -29,8 +29,6 @@ window1.bind("<Key>", keypress)
 window1.bind("<Return>", enter)
 window1.bind("<BackSpace>", delete)
 
-
-
 top_post = canvas.create_line(75,20,125,20, fill="black", width=2)
 head_connect = canvas.create_line(125,20,125,40, fill="black", width=2)
 pole = canvas.create_line(75,20,75,200, fill="black", width=2)
@@ -132,33 +130,33 @@ Deletebutton.place(x=242, y=59)
 def consequence(incorrect_guess, letter):
     if incorrect_guess == 1:
         head = canvas.create_oval(105,40,145,80, outline="black", fill="white", width=2) #195-->145
-        canvas.create_text(195,70, text=f"{letter}", font=30, fill="red")
+        letter1 = canvas.create_text(195,70, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 2:
         body = canvas.create_line(125,80,125,140, fill="black", width=2)
-        canvas.create_text(225,70, text=f"{letter}", font=30, fill="red")
+        letter2 = canvas.create_text(225,70, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 3:
         left_leg = canvas.create_line(125,140,105,160, fill="black", width=2)
-        canvas.create_text(255,70, text=f"{letter}", font=30, fill="red")
+        letter3 = canvas.create_text(255,70, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 4:
         right_leg = canvas.create_line(125,140,145,160, fill="black", width=2)
-        canvas.create_text(195,100, text=f"{letter}", font=30, fill="red")
+        letter4 = canvas.create_text(195,100, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 5:
         left_arm = canvas.create_line(125,90,100,110, fill="black", width=2)
-        canvas.create_text(225,100, text=f"{letter}", font=30, fill="red")
+        letter5 = canvas.create_text(225,100, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 6:
         right_arm = canvas.create_line(125,90,150,110, fill="black", width=2)
-        canvas.create_text(255,100, text=f"{letter}", font=30, fill="red")
+        letter6 = canvas.create_text(255,100, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 7:
-        canvas.create_line(113,50,123,60, fill="black", width=2)
-        canvas.create_line(123,50,113,60, fill="black", width=2)
-        canvas.create_text(195,130, text=f"{letter}", font=30, fill="red")
+        eye1 = canvas.create_line(113,50,123,60, fill="black", width=2)
+        eye2 = canvas.create_line(123,50,113,60, fill="black", width=2)
+        letter7 = canvas.create_text(195,130, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 8:
-        canvas.create_line(137,50,127,60, fill="black", width=2)
-        canvas.create_line(127,50,137,60, fill="black", width=2)
-        canvas.create_text(225,130, text=f"{letter}", font=30, fill="red")
+        eye3 = canvas.create_line(137,50,127,60, fill="black", width=2)
+        eye4 = canvas.create_line(127,50,137,60, fill="black", width=2)
+        letter8 = canvas.create_text(225,130, text=f"{letter}", font=30, fill="red")
     if incorrect_guess == 9:
         mouth = canvas.create_line(115,70,135,70, fill="black", width=2)
-        canvas.create_text(255,130, text=f"{letter}", font=30, fill="red")
+        letter9 = canvas.create_text(255,130, text=f"{letter}", font=30, fill="red")
         #   reveal word, no longer allow inputs, can start again?
         loss = canvas.create_text(225,30, text="YOU LOSE!", font=30)
 
@@ -225,6 +223,7 @@ def closing2():
         again = input("Would you like to play again (yes/no)? ")
         if again == "yes":
             print("Great, let's play!")
+
             hangman()
             break
         elif again == "no":
