@@ -288,6 +288,7 @@ def letter_guess(word):
                 break
         if all(letter in guessed_letters for letter in word):
             print("Congratulations! You've guessed the word:", word)
+            display_word(word, guessed_letters)
             break
 
 def hangman():
