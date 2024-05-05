@@ -12,7 +12,7 @@ def keypress(event):
 def submit_letter(): 
     letter = entry_box["text"]
 
-def enter(event): #just to make sure keyboard and window button do same thing
+def enter(event):
     submit_letter()
 
 def delete(event):

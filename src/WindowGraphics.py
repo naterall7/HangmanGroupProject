@@ -13,7 +13,7 @@ def submit_letter():
     letter = entry_box["text"]
     letter_guess(letter, selected_word, guessed_letters)
 
-def enter(event): #just to make sure keyboard and window button do same thing
+def enter(event):
     submit_letter()
 
 def delete(event):
