@@ -11,7 +11,6 @@ def keypress(event):
 
 def submit_letter(): 
     letter = entry_box["text"]
-    return letter
 
 def enter(event): #just to make sure keyboard and window button do same thing
     submit_letter()

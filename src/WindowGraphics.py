@@ -1,10 +1,9 @@
-import sys
-sys.path.insert(0, '../HangmanGroupProject/src')
-from HangmanGroupProject import *
-
 import tkinter as tk
 window1 = tk.Tk()
 window1.title("Hangman")
+
+canvas = tk.Canvas(borderwidth=4, relief="ridge", height=200, width=300, bg="white")
+canvas.pack()
 
 def keypress(event):
     key = event.char
@@ -12,7 +11,7 @@ def keypress(event):
 
 def submit_letter(): 
     letter = entry_box["text"]
-    print(letter)
+    letter_guess(letter, selected_word, guessed_letters)
 
 def enter(event): #just to make sure keyboard and window button do same thing
     submit_letter()
@@ -29,48 +28,13 @@ window1.bind("<Key>", keypress)
 window1.bind("<Return>", enter)
 window1.bind("<BackSpace>", delete)
 
-canvas = tk.Canvas(borderwidth=4, relief="ridge", height=200, width=300, bg="white")
-canvas.pack()
-
 top_post = canvas.create_line(75,20,125,20, fill="black", width=2)
 head_connect = canvas.create_line(125,20,125,40, fill="black", width=2)
 pole = canvas.create_line(75,20,75,200, fill="black", width=2)
 base = canvas.create_line(60,200,90,200, fill="black", width=2)
 
-# head = canvas.create_oval(105,40,145,80, outline="black", fill="white", width=2)
-# body = canvas.create_line(125,80,125,140, fill="black", width=2)
-# left_leg = canvas.create_line(125,140,105,160, fill="black", width=2)
-# right_leg = canvas.create_line(125,140,145,160, fill="black", width=2)
-# left_arm = canvas.create_line(125,90,100,110, fill="black", width=2)
-# right_arm = canvas.create_line(125,90,150,110, fill="black", width=2)
-# mouth = canvas.create_line(115,70,135,70, fill="black", width=2)
-# #   The following make up the left eye
-# canvas.create_line(113,50,123,60, fill="black", width=2)
-# canvas.create_line(123,50,113,60, fill="black", width=2)
-# #   The following make up the right eye
-# canvas.create_line(137,50,127,60, fill="black", width=2)
-# canvas.create_line(127,50,137,60, fill="black", width=2)
-
-# loss = canvas.create_text(230,30, text="YOU LOSE!", font=40, fill="red")
-# canvas.create_text(195,70, text="W", font=30, fill="red")
-# canvas.create_text(225,70, text="P", font=30, fill="red")
-# canvas.create_text(255,70, text="U", font=30, fill="red")
-# canvas.create_text(195,100, text="A", font=30, fill="red")
-# canvas.create_text(225,100, text="D", font=30, fill="red")
-# canvas.create_text(255,100, text="L", font=30, fill="red")
-# canvas.create_text(195,130, text="H", font=30, fill="red")
-# canvas.create_text(225,130, text="F", font=30, fill="red")
-# canvas.create_text(255,130, text="I", font=30, fill="red")
-
 word_label = tk.Label(text="", relief="ridge", borderwidth=4, bg="white", width=17)
 word_label.pack()
-
-def letter_blanks(length):
-    for x in range(0,length):
-        current_text = word_label["text"]
-        word_label.config(text=current_text+" __")
-length = len("Word")
-letter_blanks(length)
 
 entry_box = tk.Label(text="", borderwidth=4, bg="white", relief="ridge", width=17)
 entry_box.pack()
@@ -137,39 +101,186 @@ Mbutton.place(x=215, y=59)
 Deletebutton = tk.Button(master=keyboard, text="Delete", height=1, width=4, command=deletion)
 Deletebutton.place(x=242, y=59)
 
+def consequence(incorrect_guess, letter):
+    if incorrect_guess == 1:
+        head = canvas.create_oval(105,40,145,80, outline="black", fill="white", width=2) #195-->145
+        letter1 = canvas.create_text(195,70, text=f"{letter}", font=30, fill="red")
+    if incorrect_guess == 2:
+        body = canvas.create_line(125,80,125,140, fill="black", width=2)
+        letter2 = canvas.create_text(225,70, text=f"{letter}", font=30, fill="red")
+    if incorrect_guess == 3:
+        left_leg = canvas.create_line(125,140,105,160, fill="black", width=2)
+        letter3 = canvas.create_text(255,70, text=f"{letter}", font=30, fill="red")
+    if incorrect_guess == 4:
+        right_leg = canvas.create_line(125,140,145,160, fill="black", width=2)
+        letter4 = canvas.create_text(195,100, text=f"{letter}", font=30, fill="red")
+    if incorrect_guess == 5:
+        left_arm = canvas.create_line(125,90,100,110, fill="black", width=2)
+        letter5 = canvas.create_text(225,100, text=f"{letter}", font=30, fill="red")
+    if incorrect_guess == 6:
+        right_arm = canvas.create_line(125,90,150,110, fill="black", width=2)
+        letter6 = canvas.create_text(255,100, text=f"{letter}", font=30, fill="red")
+    if incorrect_guess == 7:
+        eye1 = canvas.create_line(113,50,123,60, fill="black", width=2)
+        eye2 = canvas.create_line(123,50,113,60, fill="black", width=2)
+        letter7 = canvas.create_text(195,130, text=f"{letter}", font=30, fill="red")
+    if incorrect_guess == 8:
+        eye3 = canvas.create_line(137,50,127,60, fill="black", width=2)
+        eye4 = canvas.create_line(127,50,137,60, fill="black", width=2)
+        letter8 = canvas.create_text(225,130, text=f"{letter}", font=30, fill="red")
+    if incorrect_guess == 9:
+        mouth = canvas.create_line(115,70,135,70, fill="black", width=2)
+        letter9 = canvas.create_text(255,130, text=f"{letter}", font=30, fill="red")
+
+import random
+
+class Player:
+    def __init__(self, name):
+        self.name = name
+
+    def welcome(self):
+        print("Welcome, " + self.name + "!")
+
+name = input("What is your name? ")
+Player_1 = Player(name)
+window1.title(f"Hangman - Current player: {name}")
+
+def intro():
+    Player_1.welcome()
+    while True:
+        played = input("Have you ever played hangman before (yes/no)? ")
+        if played == "yes":
+            while True:
+                ready = input("Are you ready to play(yes/no)? ")
+                if ready == "yes":
+                    print("Great, let's play!")
+                    hangman()
+                    break
+                elif ready == "no":
+                    closing1()
+                    break
+                else:
+                    print("Please type 'yes' or 'no'!")
+                    continue
+            break
+        elif played == "no":
+            print("Don't worry, it's easy! There will be a secret word picked from a list of words.") 
+            print("You, the player, must guess the secret word, letter by letter.")
+            print("For each wrong letter guessed, there will be a part of a drawing of a man.")
+            print("If the drawing of the man is completed before the word is guessed, you lose.")
+            print("If the word is guessed before the drawing is completed, you win!")
+            while True:
+                ready_now = input("Are you ready to play now (yes/no)? ")
+                if ready_now == "yes":
+                    print("Great, let's play!")
+                    hangman()
+                    break
+                elif ready_now == "no":
+                    closing1()
+                    break
+                else:
+                    print("Please type 'yes' or 'no'!")
+                    continue
+            break
+        else:
+            print("Please type 'yes' or 'no'!")
+            continue
+
+def closing1():
+    print("Alright, I'll be here when you're ready!")
+    print("*silently waves goodbye*")
+    window1.destroy()
+
+def closing2():
+    print("Thanks for playing!")
+    while True:
+        again = input("Would you like to play again (yes/no)? ")
+        if again == "yes":
+            print("Great, let's play!")
+            canvas.delete("all")
+            canvas.pack()
+            top_post = canvas.create_line(75,20,125,20, fill="black", width=2)
+            head_connect = canvas.create_line(125,20,125,40, fill="black", width=2)
+            pole = canvas.create_line(75,20,75,200, fill="black", width=2)
+            base = canvas.create_line(60,200,90,200, fill="black", width=2)
+            global selected_word
+            global incorrect_guess
+            global guessed_letters
+            selected_word = select_random_word()
+            incorrect_guess = 0
+            guessed_letters = set()
+            hangman()
+            break
+        elif again == "no":
+            print("Alright, see you next time!")
+            print("*silently waves goodbye*")
+            window1.destroy()
+            break
+        else:
+            print("Please type 'yes' or 'no'!")
+            continue
+
+word_bank = ["prettiest","close","massive","hollow","cultured","seashore","explode","dizzy","minister","competent",
+"thoughtful","harbor","tidy","dance","children","zesty","clean","ball","nostalgic","plan","week","strap","board",
+"slope","bat","steep","mourn","cat","girl","ancient","street","mice","dare","wasteful","tub","limping","whimsical",
+"eager","eggs","detail","experience","beds","train","place","cows","admit","rare","respect","loose","group","enjoy",
+"internal","macabre","imported","crooked","confused","hug","unkempt","coal","meddle","hapless","country","zealous",
+"sick","pray","lake","tiny","key","empty","labored","delirious","ants","need","omniscient","onerous","damp","subtract",
+"sack","connection","toad","gather","record","new","trashy","flow","river","sparkling","kneel","daughter","glue",
+"allow","raspy","eminent","weak","wrong","pretend","receipt","celery","plain","fire","heal","damaging","honorable",
+"foot","ignorant","substance","crime","giant","learned","itchy","smoke","station","jaded","innocent"]
+
+
+def select_random_word():
+    return random.choice(word_bank)
+
+def display_word(word, guessed_letters):
+    displayed_word = ""
+    for letter in word:
+        if letter in guessed_letters:
+            displayed_word += letter + " "
+            word_label.config(text=displayed_word)
+        else:
+            displayed_word += "__ "
+            word_label.config(text=displayed_word)
+    return displayed_word.strip()
+
+guessed_letters = set()
+incorrect_guess = 0
+
+def letter_guess(guess, word, guessed_letters):
+    global incorrect_guess
+    if guess in guessed_letters:
+        print("You've already guessed that letter.")
+        print("Word:", display_word(word, guessed_letters))
+    elif guess in word:
+        print("Good job! You guessed a letter correctly.")
+        guessed_letters.add(guess)
+        print("Word:", display_word(word, guessed_letters))
+    else:
+        print("Sorry, that letter is not in the word.")
+        incorrect_guess += 1
+        consequence(incorrect_guess, guess)
+        guessed_letters.add(guess)
+        print("Word:", display_word(word, guessed_letters))
+    if incorrect_guess == 9:
+        loss = canvas.create_text(225,30, text="YOU LOSE!", font=30)
+        print("Sorry, game lost.")
+        print(f"The word was \"{word}\"")
+        closing2()
+    if all(letter in guessed_letters for letter in word):
+        win = canvas.create_text(225,30, text="YOU WIN!", font=30)
+        print("Congratulations! You've guessed the word:", word)
+        display_word(word, guessed_letters)
+        closing2()
+
+selected_word = select_random_word()
+
+def hangman():
+    print("The word has", len(selected_word), "letters.")
+    guessed_letters = ""
+    print("Word:", display_word(selected_word, guessed_letters))
+
 intro()
 
 window1.mainloop()
-
-def consequence(incorrect_guess, letter):
-    if incorrect_guess == 1:
-        head = canvas.create_oval(155,40,195,80, outline="black", fill="white", width=2)
-        canvas.create_text(195,70, text=f"{letter}", font=30, fill="red")
-    if incorrect_guess == 2:
-        body = canvas.create_line(175,80,175,140, fill="black", width=2)
-        canvas.create_text(225,70, text=f"{letter}", font=30, fill="red")
-    if incorrect_guess == 3:
-        left_leg = canvas.create_line(175,140,155,160, fill="black", width=2)
-        canvas.create_text(255,70, text=f"{letter}", font=30, fill="red")
-    if incorrect_guess == 4:
-        right_leg = canvas.create_line(175,140,195,160, fill="black", width=2)
-        canvas.create_text(195,100, text=f"{letter}", font=30, fill="red")
-    if incorrect_guess == 5:
-        left_arm = canvas.create_line(175,90,150,110, fill="black", width=2)
-        canvas.create_text(225,100, text=f"{letter}", font=30, fill="red")
-    if incorrect_guess == 6:
-        right_arm = canvas.create_line(175,90,200,110, fill="black", width=2)
-        canvas.create_text(255,100, text=f"{letter}", font=30, fill="red")
-    if incorrect_guess == 7:
-        canvas.create_line(163,50,173,60, fill="black", width=2)
-        canvas.create_line(173,50,163,60, fill="black", width=2)
-        canvas.create_text(195,130, text=f"{letter}", font=30, fill="red")
-    if incorrect_guess == 8:
-        canvas.create_line(187,50,177,60, fill="black", width=2)
-        canvas.create_line(177,50,187,60, fill="black", width=2)
-        canvas.create_text(225,130, text=f"{letter}", font=30, fill="red")
-    if incorrect_guess == 9:
-        mouth = canvas.create_line(165,70,185,70, fill="black", width=2)
-        canvas.create_text(255,130, text=f"{letter}", font=30, fill="red")
-        #   reveal word, no longer allow inputs, can start again?
-        loss = canvas.create_text(65,30, text="YOU LOSE!", font=30)
