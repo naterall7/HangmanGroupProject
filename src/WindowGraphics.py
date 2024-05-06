@@ -209,6 +209,7 @@ def closing2():
             selected_word = select_random_word()
             incorrect_guess = 0
             guessed_letters = set()
+            entry_box.config(text="")
             hangman()
             break
         elif again == "no":
